@@ -1,0 +1,137 @@
+{
+  "name": "observe-2ch-client",
+  "version": "0.0.1",
+  "description": "UI for Observe2ch Web",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gutchom/observe-2ch-client"
+  },
+  "engineStrict": true,
+  "engines": {
+    "node": "^8.2.1"
+  },
+  "browserslist": [
+    "> 2%",
+    "last 2 versions"
+  ],
+  "stylelint": {
+    "extends": "stylelint-config-standard"
+  },
+  "babel": {
+    "presets": [
+      "env",
+      "react",
+      "stage-2"
+    ],
+    "plugins": [
+      "transform-decorators-legacy",
+      "transform-class-properties",
+      "syntax-object-rest-spread"
+    ],
+    "env": {
+      "test": {
+        "presets": [
+          "airbnb",
+          "power-assert"
+        ]
+      }
+    }
+  },
+  "scripts": {
+    "start": "npm-run-all dev",
+    "test": "cross-env NODE_ENV=test karma start karma.conf.js --single-run",
+    "testing": "cross-env NODE_ENV=test karma start karma.conf.js --auto-watch --no-single-run",
+    "lint": "npm-run-all --parallel lint:*",
+    "lint:style": "stylelint src/styles/**/*.css",
+    "lint:script": "tslint src/scripts/**/*.ts src/test/**/*.ts",
+    "dev": "npm-run-all --parallel dev:* server",
+    "dev:asset": "cpx 'src/assets/**/*' www -w",
+    "dev:template": "pug -o www -b src/templates -w src/templates/pages -P",
+    "dev:style": "postcss src/styles/**/*.css -d www/css -mw",
+    "dev:script": "cross-env NODE_ENV=development webpack --config webpack.config.js -d --progress --watch --display-error-details",
+    "build": "npm-run-all --silent lint test clean build:*",
+    "build:asset": "cpx 'src/assets/**/*' www -C",
+    "build:template": "pug -o www -b src/templates src/templates/pages",
+    "build:style": "postcss src/styles/**/*.css -d www/css",
+    "build:script": "cross-env NODE_ENV=production webpack --config webpack.config.js -p --progress",
+    "template": "npm-run-all --parallel dev:template server",
+    "style": "npm-run-all --parallel dev:style server",
+    "script": "npm-run-all --parallel dev:script server",
+    "server": "node server.js",
+    "proxy": "node proxy.js",
+    "clean": "rimraf www"
+  },
+  "dependencies": {
+    "babel-polyfill": "^6.23.0",
+    "moment": "^2.18.1",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "tween.js": "^16.6.0",
+    "url-search-params": "^0.10.0"
+  },
+  "devDependencies": {
+    "@types/enzyme": "^2.8.4",
+    "@types/mocha": "^2.2.41",
+    "@types/node": "^8.0.17",
+    "@types/power-assert": "^1.4.29",
+    "@types/react": "^15.6.0",
+    "@types/react-dom": "^15.5.1",
+    "@types/sinon": "^2.3.3",
+    "@types/tween.js": "16.6.1",
+    "babel-core": "^6.25.0",
+    "babel-loader": "^7.1.1",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-plugin-transform-object-rest-spread": "^6.23.0",
+    "babel-preset-airbnb": "^2.4.0",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-power-assert": "^1.0.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "body-parser": "^1.17.2",
+    "caniuse-lite": "^1.0.30000708",
+    "colors": "^1.1.2",
+    "cpx": "^1.5.0",
+    "cross-env": "^5.0.1",
+    "cssnano": "^3.10.0",
+    "enzyme": "^2.9.1",
+    "express": "^4.15.3",
+    "json-loader": "^0.5.7",
+    "karma": "^1.7.0",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-coverage": "^1.1.1",
+    "karma-es6-shim": "^1.0.0",
+    "karma-mocha": "^1.3.0",
+    "karma-mocha-reporter": "^2.2.3",
+    "karma-phantomjs-launcher": "^1.0.4",
+    "karma-power-assert": "^1.0.0",
+    "karma-sourcemap-loader": "^0.3.7",
+    "karma-sourcemap-writer": "^0.1.2",
+    "karma-webpack": "^2.0.4",
+    "mocha": "^3.4.2",
+    "npm-run-all": "^4.0.2",
+    "postcss": "^6.0.8",
+    "postcss-browser-reporter": "^0.5.0",
+    "postcss-cli": "^4.1.0",
+    "postcss-cssnext": "^3.0.2",
+    "postcss-import": "^10.0.0",
+    "postcss-reporter": "^5.0.0",
+    "postcss-url": "^7.1.1",
+    "power-assert": "^1.4.4",
+    "pug": "^2.0.0-rc.2",
+    "pug-cli": "^1.0.0-alpha6",
+    "react-addons-test-utils": "^15.6.0",
+    "react-test-renderer": "^15.6.1",
+    "rimraf": "^2.6.1",
+    "sinon": "^2.4.1",
+    "stylelint": "^8.0.0",
+    "stylelint-config-standard": "^17.0.0",
+    "ts-loader": "^2.3.2",
+    "tslint": "5.5.0",
+    "typescript": "2.4.2",
+    "uglify-js": "^3.0.27",
+    "uglifyjs-webpack-plugin": "^0.4.6",
+    "webpack": "^3.4.1"
+  }
+}

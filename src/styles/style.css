@@ -1,0 +1,22 @@
+:root {
+  --color-select: #65b3c1;
+  --color-gray: #ddd;
+}
+
+.text-input {
+  border: 3px solid var(--color-gray);
+  border-radius: 6px;
+  font-size: 1em;
+  margin: auto;
+  padding: 6px 12px;
+  position: relative;
+  text-align: center;
+  width: 72px;
+  z-index: 10;
+
+  &:focus {
+    border-color: var(--color-select);
+    box-shadow: 0 0 3px 3px rgba(127, 127, 127, 0.75);
+    color: var(--color-select);
+  }
+}
