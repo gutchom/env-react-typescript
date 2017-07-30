@@ -58,7 +58,9 @@
     "template": "npm-run-all --parallel dev:template server",
     "style": "npm-run-all --parallel dev:style server",
     "script": "npm-run-all --parallel dev:script server",
-    "server": "node server.js",
+    "server": "npm-run-all --parallel server:mock server:sync",
+    "server:mock": "node server.js",
+    "server:sync": "browser-sync start -f public -p 'localhost:3000' --port 3333",
     "proxy": "node proxy.js",
     "clean": "rimraf public"
   },
@@ -90,6 +92,7 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
     "body-parser": "^1.17.2",
+    "browser-sync": "^2.18.13",
     "caniuse-lite": "^1.0.30000708",
     "colors": "^1.1.2",
     "cpx": "^1.5.0",
