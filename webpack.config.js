@@ -10,7 +10,7 @@ module.exports = {
   },
   output: {
     filename: '[name].js',
-    path: resolve(__dirname, 'www/js'),
+    path: resolve(__dirname, 'public/js'),
   },
   plugins: [
     new webpack.NoEmitOnErrorsPlugin(),
