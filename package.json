@@ -1,11 +1,11 @@
 {
-  "name": "observe-2ch-client",
+  "name": "@gutchom/env-react-typescript",
   "version": "0.0.1",
-  "description": "UI for Observe2ch Web",
+  "description": "My front-end development environment.",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/gutchom/observe-2ch-client"
+    "url": "https://github.com/gutchom/env-react-typescript"
   },
   "engineStrict": true,
   "engines": {
